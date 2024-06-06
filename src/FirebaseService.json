@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "logincontrolagastos",
+  "private_key_id": "d762b49b30bc757dccde843589d8dc412b362489",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsP341kOoMAJQ3\nvCO1cAgvOrxRAieWFTMEDUGK8cLBodgpcGaYFAsM0ltVJK1ZlQDbJ+rl1GndKEUF\nfEj1UfFhRNmgRWqpMgqcoR0UYcqm8FLoez18P1L7+66MjP7lXI8E7rcRlQh9VQJk\nNZVcXbhXcOOA37un3Iowk1gc86vJXvnxuLDURdZtPYg0DRpPSTbiMUsD98VKAx5M\ntrPaR9xg0iWaWDV99BntUjDjAKh3ULsshbWrDN1fvpWC/OaPCJ6Fk0oV3/0viMkW\nFCF1aV3BeT7Rc+MXcrr1JJLVf1s/qpXpgfPC6CQUg0tgg4gC5hXqix13+HAf60UE\nBsKG6zmnAgMBAAECggEAGeUXt7zX+sLxhWmC4sl7aYJGglU1F1KLj13gzx8mXM7U\nfPJZch59RMmxEl1HtFJ6xPe80B19ZtKhgcAcBclyZOGhZ/9XmCUeRErSYNiMy0kQ\n5cN1TGMGujwtkxK1VUzzcVXj7sA9fP4VNHR7xl2Ok5K0mRDJmORGYCQemIeneUfP\nCAMHgsRGEdzQJJa4/yR7n3i82DLzrmZ8BGcxkhItSuEpHQa0ckV7dD5GZg+2st49\np6Jlebcr98Dwq0t449hIMxzSWTpxKbZtryak3ZZkGnm6WDZRLn1HmiX3KmKIfnh8\nOSBhmtSfD10if+IC5m7WP9cb9Izw/WJFC1A75+1beQKBgQDo9itO4LoRcigmBKU2\nMNfBvgbIgqMA65aCDOyXp/aTY35QzvZ9ULCHWTxc+zl1Wg5iuvFFPsGJ+bXWc1yx\nakCrcfJV7SRSGowXgh6jsbUdqlHMBr8IvDP5wV7cbHR/Df8Gufnp/Mpa+g80G/EK\ncYfa48wuhzcnvv8ZnkZDjVV9iQKBgQC9SEDV2t4TXmUCUpCNezQ1SeJl5jdlZ2Ws\nylpKucZX3Q63SR6RAfb31E9WhwbMxvHCAP46JB825ZnxWHQErTpGURdwOlRFUIZ8\nTBf/IQrSU+GfgrPhn6+foj0E/NEni5yZ1f2KmzmhJDfW2tvswGrn2W9JeZXjwABi\n6JVYWL3hrwKBgDihFpf/AtwYzu+m824/40LCaa22K9+eZSDJ+X1IJCVh6yPDm6GM\nysysAYNswmPnd1XCscGuZqeenvg5ZM/vzzad5VXD5q9aqrFQPRh3q1pBu86H2UpL\nTaspuWCFsK/t/A9rh/e8Loh8/tMg87AhNvAbrdeloN+1ixd0JQpowd5ZAoGBAJx1\nSQJ8s+yWri/JR6trF7CkrftE3K15VlYJvbDe9tBR7YQbcKS0Vwxr9lizrC9Akz2l\nzH8KtLKP/zu7vcrP1ceh6BngXSAee8vqqjs9eNB6fZl4VHA/qs/tLzscL1bc1Elk\n1PrpbC2C3pU+u2NrefLDjHXThs6HOsqHLkukrvAJAoGBANlC2Ms0BbJg68wnt9fA\nqFbcVn24CbdpX9UDuHk2S2Da6ZnRBsNoBKckMgQXf6fXuoSrV96NQYdHUz8MRsoA\nzdNOz8JLfo70CvsRzkK16vSK/NR4V98GMecV7NKWhinhSQBYnr9zGUxfVKIn5mWr\n/djs1YG0bdF04KnkSZ1oplYJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-39nra@logincontrolagastos.iam.gserviceaccount.com",
+  "client_id": "115649082852770084743",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-39nra%40logincontrolagastos.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
