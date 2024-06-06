@@ -32,33 +32,24 @@ class FirebaseAuthController {
     }
   }
 
-  async loginUser(req, res) {
+  loginUser(req, res) {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(422).json({
-        email: "Email is required",
-        password: "Password is required",
-      });
-    }
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const idToken = userCredential._tokenResponse.idToken;
-
-      if (idToken) {
-        res.cookie('access_token', idToken, {
-          httpOnly: true
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => { 
+          const idToken = userCredential._tokenResponse.idToken
+            if (idToken) {
+                res.cookie('access_token', idToken, {
+                    httpOnly: true
+                });
+                res.status(200).json({ message: "Usuário logado com sucesso!", userCredential });
+            } else {
+                res.status(500).json({ error: "Ocorreu um erro interno!" });
+            }
+        })
+        .catch((error) => {
+            const errorMessage = error.message || "Ocorreu um erro ao tentar fazer o login!";
+            res.status(500).json({ error: errorMessage });
         });
-        res.status(200).json({ message: "User logged in successfully", userCredential });
-      } else {
-        res.status(500).json({ error: "Internal Server Error" });
-      }
-    } catch (error) {
-      console.error(error);
-      const errorMessage = error.message || "An error occurred while logging in";
-      res.status(500).json({ error: errorMessage });
-    }
   }
 
   async logoutUser(req, res) {
