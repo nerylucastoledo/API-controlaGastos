@@ -10,4 +10,15 @@ const getAllUsers = async (req, res) => {
   }
 }
 
-module.exports = { getAllUsers };
+const createUser = async (body) => {
+  try {
+    const db = await connectToDatabase();
+    const users = await db.collection("users");
+    users.insertMany([body])
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+module.exports = { getAllUsers, createUser };
