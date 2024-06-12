@@ -5,6 +5,7 @@ const userRoutes = require('./src/routes/userRoutes');
 const cardRoutes = require('./src/routes/cardRoutes');
 const peopleRoutes = require('./src/routes/peopleRoutes');
 const categorysRoutes = require('./src/routes/categorysRoutes');
+const billRoutes = require('./src/routes/billRoutes');
 const firebaseRoutes = require('./src/routes/firebaseRoutes');
 const verifyToken = require('./src/middleware');
 
@@ -16,10 +17,11 @@ app.use(express.json());
 
 // Routes
 app.use('/api', firebaseRoutes);
-app.use('/api', verifyToken, userRoutes);
-app.use('/api', verifyToken, cardRoutes);
-app.use('/api', verifyToken, peopleRoutes);
-app.use('/api', verifyToken, categorysRoutes);
+app.use('/api', userRoutes);
+app.use('/api', cardRoutes);
+app.use('/api', peopleRoutes);
+app.use('/api', categorysRoutes);
+app.use('/api', billRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

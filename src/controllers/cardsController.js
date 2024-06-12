@@ -1,13 +1,30 @@
 const connectToDatabase = require("../models/db")
 
-const getAllCards = async (req, res) => {
+const createCard = async (req, res) => {
   try {
+    const { name, color, username } = req.body
     const db = await connectToDatabase();
-    const cards = await db.collection("cards").find({ username: "lucas@1" }).toArray();
-    res.status(200).json(cards);
+    const cards = await db.collection("cards");
+
+    cards.insertOne({
+      username,
+      name,
+      color
+    })
+    res.status(201).json({ message: "Cartão criado com sucesso!" });
   } catch (err) {
-    res.status(500).send('Conexão falhou');
+    res.status(500).send({ error: "Ocorreu um erro interno!" });
   }
 }
 
-module.exports = { getAllCards };
+const getCards = async (username) => {
+  try {
+    const db = await connectToDatabase();
+    const cards = await db.collection("cards").find({ username }).toArray();
+    return cards
+  } catch {
+    return [];
+  }
+}
+
+module.exports = { createCard, getCards };

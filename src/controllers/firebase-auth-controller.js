@@ -6,7 +6,7 @@ const {
   sendEmailVerification,
   sendPasswordResetEmail
 } = require('../config/firebase');
-const { createUser } = require('./userController');
+const { createUser, getAllUsers } = require('./userController');
 
 const auth = getAuth();
 
@@ -17,7 +17,7 @@ class FirebaseAuthController {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
 
-      const userCreated = await createUser({ name, username, salary });
+      const userCreated = await createUser({ email, name, username, salary });
 
       if (userCreated) {
         await sendEmailVerification(auth.currentUser);
@@ -26,7 +26,6 @@ class FirebaseAuthController {
         throw new Error("Erro ao criar usuário no banco de dados");
       }
     } catch (error) {
-      console.error(error);
       const errorMessage = error.message || "Ocorreu um erro ao criar o usuário";
       res.status(500).json({ error: errorMessage });
     }
@@ -35,13 +34,14 @@ class FirebaseAuthController {
   loginUser(req, res) {
     const { email, password } = req.body;
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => { 
+        .then(async (userCredential) => { 
           const idToken = userCredential._tokenResponse.idToken
-            if (idToken) {
+          const user = await getAllUsers({ email });
+            if (idToken && user.length) {
                 res.cookie('access_token', idToken, {
-                    httpOnly: true
+                  httpOnly: true
                 });
-                res.status(200).json({ message: "Usuário logado com sucesso!", userCredential });
+                res.status(200).json({ message: "Usuário logado com sucesso!", userCredential, username: user[0].username, salary: user[0].salary });
             } else {
                 res.status(500).json({ error: "Ocorreu um erro interno!" });
             }
@@ -58,7 +58,6 @@ class FirebaseAuthController {
       res.clearCookie('access_token');
       res.status(200).json({ message: "User logged out successfully" });
     } catch (error) {
-      console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
@@ -76,7 +75,6 @@ class FirebaseAuthController {
       await sendPasswordResetEmail(auth, email);
       res.status(200).json({ message: "Password reset email sent successfully!" });
     } catch (error) {
-      console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }

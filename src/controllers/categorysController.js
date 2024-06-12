@@ -1,13 +1,29 @@
 const connectToDatabase = require("../models/db");
 
-const getAllCategorys = async (req, res) => {
+const createCategory = async (req, res) => {
   try {
+    const { name, username } = req.body
     const db = await connectToDatabase();
-    const users = await db.collection("categorys").find({}).toArray();
-    res.status(200).json(users);
+    const categorys = await db.collection("categorys");
+
+    categorys.insertOne({
+      username,
+      name,
+    })
+    res.status(201).json({ message: "Categoria criada com sucesso!" });
   } catch (err) {
-    res.status(500).send('Conexão falhou');
+    res.status(500).send({ error: "Ocorreu um erro interno!" });
   }
 }
 
-module.exports = { getAllCategorys };
+const getCategorys = async (username) => {
+  try {
+    const db = await connectToDatabase();
+    const categorys = await db.collection("categorys").find({ username }).toArray();
+    return categorys
+  } catch (err) {
+    return []
+  }
+}
+
+module.exports = { createCategory, getCategorys };

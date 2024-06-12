@@ -1,7 +1,8 @@
 const express = require('express');
-const { getAllPeoples } = require('../controllers/peoplesController');
+const { createPeople } = require('../controllers/peoplesController');
+
 const router = express.Router();
 
-router.get('/peoples', getAllPeoples);
+router.post('/peoples', createPeople);
 
 module.exports = router;
