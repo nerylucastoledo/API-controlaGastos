@@ -1,10 +1,11 @@
 const express = require('express');
-const { getAllBills, updateBill, deleteBillItem } = require('../controllers/bill');
+const { getBillByUsernameAndDate, getDataChart, updateBill, deleteBillItem } = require('../controllers/billController');
 
 const router = express.Router();
 
-router.delete('/bill', deleteBillItem)
-router.get('/bill', getAllBills);
+router.get('/bill', getBillByUsernameAndDate);
+router.get('/bill/:username/:year', getDataChart);
 router.put('/bill', updateBill)
+router.delete('/bill', deleteBillItem)
 
 module.exports = router;
