@@ -1,5 +1,4 @@
 const connectToDatabase = require("../models/db");
-const { ObjectId } = require('mongodb');
 
 class UserService {
   static async createUser(body) {

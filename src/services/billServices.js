@@ -15,6 +15,56 @@ const formatCurrencyToNumber = (value) => {
 }
 
 class BillService {
+  static async createBill({ body }) {
+    try {
+      const db = await connectToDatabase();
+      const bills = await db.collection("bill");
+  
+      bills.insertOne({
+        username: body.username,
+        date: body.date,
+        people: body.people,
+        category: body.category,
+        value: body.value, 
+        item: body.item,
+        card: body.card,
+      })
+
+      return {
+        error: false,
+        message: "Gasto criado com sucesso!"
+      };
+    } catch {
+      console.error("Erro ao criar o gasto:", error);
+
+      return {
+        error: true,
+        message: "Ocorreu um problema, tente novamente!"
+      };
+    }
+  }
+
+  static async createBillInstallment({ body }) {
+    try {
+      const db = await connectToDatabase();
+      const bills = await db.collection("bill");
+  
+      bills.insertMany(body)
+
+      return {
+        error: false,
+        message: "Gasto criado com sucesso!"
+      };
+    } catch {
+      console.error("Erro ao criar o gasto:", error);
+
+      return {
+        error: true,
+        message: "Ocorreu um problema, tente novamente!"
+      };
+    }
+  }
+
   static async findAllBillByUsernameAndDate(username, date) {
     try {
       const db = await connectToDatabase();

@@ -1,5 +1,33 @@
 const BillServices = require('../services/billServices');
 
+const createBill = async (req, res) => {
+  try {
+    let error, message;
+    const { installment } = req.body
+
+    if (installment !== 0 ) {
+      console.log("parcelado", req.body)
+      const result = await BillServices.createBillInstallment(req.body);
+      error = result.error
+      message = result.message
+    } else {
+      const result = await BillServices.createBill(req.body);
+      error = result.error
+      message = result.message
+    }
+
+    if (error) {
+      return res.status(400).send({ error: { message }});
+    }
+
+    return res.status(200).send({ message });
+  } catch (error) {
+    console.error("Erro no controlador ao criar a cartão:", error);
+    
+    return res.status(500).send({ error: { message: "Erro interno do servidor" }});
+  }
+}
+
 const getBillByUsernameAndDate = async (req, res) => {
   const { username, date } = req.query
   const data = await BillServices.findAllBillByUsernameAndDate(username, date);
@@ -36,4 +64,4 @@ const deleteBillItem = async (req, res) => {
   res.status(200).json({ message: "Deletado com sucesso!" });
 };
 
-module.exports = { getBillByUsernameAndDate, getDataChart, updateBill, deleteBillItem };
+module.exports = { createBill, getBillByUsernameAndDate, getDataChart, updateBill, deleteBillItem };
