@@ -6,13 +6,13 @@ const { getPeoples } = require("../controllers/peoplesController");
 const { getCategorys } = require("../controllers/categorysController");
 
 const formatCurrencyToNumber = (value) => {
-  value = value
+  const newValue = value
+    .slice(3, value.length - 1)
     .replace(/\./g, "")
-    .replace("R$ ", "")
-    .replace(/,/g, ".")
+    .replace(/,/g, ".");
 
-  return Number(value);
-}
+  return Number(newValue);
+};
 
 class BillService {
   static async createBill({ body }) {
